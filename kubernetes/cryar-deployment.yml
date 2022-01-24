@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryar-api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: cryar
+  template:
+    metadata:
+      labels:
+        app: cryar
+    spec:
+      containers:
+        - name: cryar-api
+          image: richeir/cryar-api:latest
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
